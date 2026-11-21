@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #f8fafc;
+    --text-primary: #0f172a;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+  }
+
+  /* High Contrast Dark Mode */
+  .theme-dark {
+    --bg-primary: #090d16;
+    --text-primary: #f8fafc;
+    --card-bg: #131c2e;
+    --border-color: #334155;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  .theme-dark .bg-white {
+    background-color: #131c2e !important;
+    color: #f8fafc !important;
+  }
+
+  .theme-dark .bg-slate-50, .theme-dark .bg-slate-100 {
+    background-color: #0b1120 !important;
+    color: #f1f5f9 !important;
+  }
+
+  .theme-dark .text-slate-900, .theme-dark .text-slate-800 {
+    color: #f8fafc !important;
+  }
+
+  .theme-dark .text-slate-600, .theme-dark .text-slate-500 {
+    color: #cbd5e1 !important;
+  }
+
+  .theme-dark .border-slate-200, .theme-dark .border-slate-100 {
+    border-color: #334155 !important;
+  }
+
+  /* Extreme High Contrast: Yellow on Black */
+  .theme-yellow-black {
+    --bg-primary: #000000;
+    --text-primary: #ffeb3b;
+    --card-bg: #121212;
+    --border-color: #ffd600;
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+  }
+
+  .theme-yellow-black * {
+    border-color: #ffff00 !important;
+  }
+
+  .theme-yellow-black .bg-white,
+  .theme-yellow-black .bg-slate-50,
+  .theme-yellow-black .bg-slate-100,
+  .theme-yellow-black .bg-blue-50,
+  .theme-yellow-black .bg-green-50,
+  .theme-yellow-black .bg-amber-50,
+  .theme-yellow-black .bg-orange-50 {
+    background-color: #111111 !important;
+    color: #ffff00 !important;
+  }
+
+  .theme-yellow-black .text-slate-900,
+  .theme-yellow-black .text-slate-800,
+  .theme-yellow-black .text-slate-700,
+  .theme-yellow-black .text-slate-600,
+  .theme-yellow-black .text-slate-500,
+  .theme-yellow-black .text-blue-900,
+  .theme-yellow-black .text-amber-900 {
+    color: #ffff00 !important;
+  }
+
+  .theme-yellow-black button,
+  .theme-yellow-black .btn-primary {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+    font-weight: 800 !important;
+  }
+
+  /* High Contrast Light (Black on White with thick borders) */
+  .theme-high-contrast-light {
+    --bg-primary: #ffffff;
+    --text-primary: #000000;
+    --card-bg: #ffffff;
+    --border-color: #000000;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .theme-high-contrast-light * {
+    font-weight: 600;
+  }
+
+  .theme-high-contrast-light .border,
+  .theme-high-contrast-light .border-2,
+  .theme-high-contrast-light .border-slate-200 {
+    border-width: 2px !important;
+    border-color: #000000 !important;
+  }
+
+  /* Blue Light Filter / Warm Night Mode */
+  .theme-blue-filter {
+    background-color: #fbf5e6 !important;
+    color: #3e2723 !important;
+  }
+
+  .theme-blue-filter .bg-white {
+    background-color: #fffaf0 !important;
+    color: #3e2723 !important;
+  }
+}
+
+/* Accessible Font */
+.font-accessible {
+  font-family: 'Atkinson Hyperlegible', sans-serif !important;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+/* Accessible Focus Outlines */
+:focus-visible {
+  outline: 3px solid #2563eb !important;
+  outline-offset: 3px !important;
+}
+
+.theme-yellow-black :focus-visible {
+  outline: 4px solid #ffffff !important;
+  outline-offset: 4px !important;
+}
+
+/* Printable Certificate styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-certificate, #printable-certificate * {
+    visibility: visible;
+  }
+  #printable-certificate {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    background: white !important;
+    color: black !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
