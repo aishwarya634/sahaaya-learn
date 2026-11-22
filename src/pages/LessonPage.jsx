@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { lessonsData } from '../data/lessonsData';
 import { speechService } from '../utils/speech';
+import { SafeYouTube } from '../components/common/SafeYouTube';
+import { resolveVideoId } from '../data/videoMap';
 import { 
   Play, 
   RotateCcw, 
@@ -196,14 +198,12 @@ export const LessonPage = () => {
         </div>
 
         {/* Video Player Container */}
-        <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black border-2 border-slate-700 shadow-inner relative">
-          <iframe
-            src={lesson.videoUrl}
-            title={lesson.videoTitle}
-            className="w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+        <div className="w-full rounded-2xl overflow-hidden border-2 border-slate-700 shadow-inner relative">
+          <SafeYouTube
+            videoId={resolveVideoId(lesson.videoUrl, lesson.title)}
+            title={lesson.videoTitle || lesson.title}
+            searchQuery={`${lesson.category === 'deaf' ? 'Indian Sign Language ISL ' : ''}${lesson.title}`}
+          />
         </div>
 
         {/* Real-time Subtitles / Visual Instructions Box */}

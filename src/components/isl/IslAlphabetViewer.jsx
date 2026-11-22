@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { islAlphabets } from '../../data/islData';
 import { IslMotionPlayer } from './IslMotionPlayer';
+import { HandSignDiagram } from './HandSignDiagram';
 import { RotateCw, Sparkles, Volume2, CheckCircle2 } from 'lucide-react';
 import { speechService } from '../../utils/speech';
 
@@ -77,6 +78,12 @@ export const IslAlphabetViewer = () => {
             videoUrl={selectedLetter.videoDemo}
             facialExpression="Direct front-facing eye contact with steady posture"
             handMotionType="two-handed"
+            signVisual={
+              <HandSignDiagram
+                letter={selectedLetter.letter}
+                description={selectedLetter.handPosition}
+              />
+            }
           />
 
           {/* Repeat and Practice Counter */}
